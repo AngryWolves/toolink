@@ -1,6 +1,6 @@
 # tolink-backend
-rest api
-springboot
-mybatis
-mysql
-redis
+# rest api
+# springboot
+# mybatis
+# mysql
+# redis
