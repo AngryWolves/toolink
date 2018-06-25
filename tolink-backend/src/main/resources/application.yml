@@ -1,0 +1,45 @@
+﻿server:
+    port: 8080
+spring:
+#    mvc:
+#        view:
+#            prefix: /WEB-INF/jsp/
+#            suffix: .jsp
+    thymeleaf:
+        cache: false
+        enabled: false
+    application:
+        name: bees
+    datasource:
+        url: jdbc:mysql://localhost:3306/bee?autoReconnect=true&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: xulu
+        driver-class-name: com.mysql.jdbc.Driver
+        initial-size: 20
+        max-active: 100
+        max-idle: 5
+        max-wait: 10000
+        min-idle: 1
+        testOnBorrow: true
+        validationQuery: SELECT 1
+#    redis:
+#        database: 1
+#        host: 192.168.1.134
+#        port: 6379
+#        password:
+#        pool:
+#            max-active: 8
+#            max-wait: -1
+#            max-idle: 8
+#            min-idle: 0
+#        timeout: 0
+
+## 日志支持
+logging:
+    file: ./log/tolink.log
+    level:
+        com:
+            xulu: WARN
+mybatis: 
+    mapperLocations: classpath:mybatis/*.xml
+    typeAliasesPackage: com.angrywolves.tolink
