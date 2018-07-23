@@ -2,6 +2,12 @@ package com.angrywolves.tolink.entity;
 
 import java.io.Serializable;
 
+/**
+ * 1.类别列表接口
+ 2.添加记账接口
+ 3.查询记账接口
+ 4.添加标签接口
+ */
 public class Demo implements Serializable{
 
     private Long id;

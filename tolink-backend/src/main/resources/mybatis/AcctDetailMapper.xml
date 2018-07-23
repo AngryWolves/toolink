@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.angrywolves.tolink.mapper.AcctDetailMapper">
+    <resultMap id="BaseResultMap" type="com.angrywolves.tolink.entity.AcctDetail">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="acct_type_id" property="acctTypeId" jdbcType="BIGINT" />
+        <result column="amount" property="amount" jdbcType="DECIMAL" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="base_sql">
+        user_id, acct_type_id, amount, create_time, modify_time
+    </sql>
+
+    <insert id="saveAcctDetail" parameterType="com.angrywolves.tolink.entity.AcctDetail" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO acct_detail (<include refid="base_sql"/>)
+      VALUES (
+        #{userId,jdbcType=BIGINT},
+        #{acctTypeId,jdbcType=BIGINT},
+        #{amount,jdbcType=DECIMAL},
+        NOW(),
+        NOW()
+        )
+    </insert>
+</mapper>

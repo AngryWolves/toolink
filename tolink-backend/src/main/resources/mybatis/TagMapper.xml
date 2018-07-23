@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.angrywolves.tolink.mapper.TagMapper">
+    <resultMap id="BaseResultMap" type="com.angrywolves.tolink.entity.Tag">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="base_sql">
+        tag_name, create_time, modify_time
+    </sql>
+
+    <!--添加-->
+    <insert id="saveTag" parameterType="com.angrywolves.tolink.entity.Tag" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tag (<include refid="base_sql"/>)
+        VALUES (
+        #{tagName,jdbcType=VARCHAR},
+        NOW(),
+        NOW()
+        )
+    </insert>
+</mapper>

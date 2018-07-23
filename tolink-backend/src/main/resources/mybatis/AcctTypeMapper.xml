@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.angrywolves.tolink.mapper.AcctTypeMapper">
+    <resultMap id="BaseResultMap" type="com.angrywolves.tolink.entity.AcctType">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="type_class" property="typeClass" jdbcType="VARCHAR" />
+        <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+        <result column="type_img_url" property="typeImgUrl" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="base_sql">
+      type_class, type_name, type_img_url, create_time, modify_time
+    </sql>
+
+    <insert id="saveAcctType" parameterType="com.angrywolves.tolink.entity.AcctType" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO acct_type (<include refid="base_sql"/>)
+        VALUES (
+        #{typeClass,jdbcType=VARCHAR},
+        #{typeName,jdbcType=VARCHAR},
+        #{typeImgUrl,jdbcType=VARCHAR},
+        NOW(),
+        NOW()
+        )
+    </insert>
+</mapper>

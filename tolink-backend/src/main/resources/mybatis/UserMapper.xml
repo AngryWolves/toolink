@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.angrywolves.tolink.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.angrywolves.tolink.entity.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="open_id" property="openId" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="region_province" property="regionProvince" jdbcType="VARCHAR" />
+        <result column="region_city" property="regionCity" jdbcType="VARCHAR" />
+        <result column="region_district" property="regionDistrict" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="base_sql">
+       open_id, user_name, sex, age, region_province, region_city, region_district
+    </sql>
+
+    <insert id="saveUser" parameterType="com.angrywolves.tolink.entity.User" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO `user` (<include refid="base_sql"/>)
+      VALUES (
+        #{openId,jdbcType=VARCHAR},
+        #{userName,jdbcType=VARCHAR},
+        #{sex,jdbcType=VARCHAR},
+        #{age,jdbcType=VARCHAR},
+        #{regionProvince,jdbcType=VARCHAR},
+        #{regionCity,jdbcType=VARCHAR},
+        #{regionDistrict,jdbcType=VARCHAR},
+        NOW(),
+        NOW()
+        )
+    </insert>
+
+</mapper>
