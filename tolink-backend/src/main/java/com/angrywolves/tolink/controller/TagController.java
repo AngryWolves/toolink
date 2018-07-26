@@ -28,7 +28,7 @@ public class TagController {
 
     @ApiOperation(value="添加标签接口", notes="添加标签接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "entity", value = "entity", required = true, paramType = "query", dataType = "Tag"),
+            @ApiImplicitParam(name = "entity", value = "entity", required = true, paramType = "create", dataType = "Tag"),
     })
     @RequestMapping(value = "/createTag", method = RequestMethod.POST)
     @ResponseBody

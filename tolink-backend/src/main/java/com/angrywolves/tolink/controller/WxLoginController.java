@@ -73,6 +73,7 @@ public class WxLoginController {
                     result.setMsg("error");
                     return result;
                 }
+                result.setData(user);
                 result.setCode("200");
                 result.setMsg("success");
                 return result;

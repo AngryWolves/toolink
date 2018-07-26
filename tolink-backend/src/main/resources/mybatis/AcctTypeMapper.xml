@@ -25,4 +25,8 @@
         NOW()
         )
     </insert>
+
+    <select id="selectAcctType" parameterType="com.angrywolves.tolink.entity.AcctType" resultMap="BaseResultMap">
+      SELECT id,<include refid="base_sql"/> FROM acct_type LIMIT LIMIT ${start},${size}
+    </select>
 </mapper>
