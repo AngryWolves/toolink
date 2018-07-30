@@ -1,5 +1,6 @@
 package com.angrywolves.tolink.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.angrywolves.tolink.entity.User;
 import com.angrywolves.tolink.framework.common.response.ResponseData;
@@ -7,11 +8,16 @@ import com.angrywolves.tolink.framework.common.util.AesCbcUtil;
 import com.angrywolves.tolink.framework.common.util.HttpRequest;
 import com.angrywolves.tolink.service.UserService;
 import io.swagger.annotations.Api;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by gf on 2018/7/23.
@@ -27,9 +33,41 @@ public class WxLoginController {
     String wxspSecret = "xxxxxxxxxxxxxx";
     //授权（必填）
     String grant_type = "authorization_code";
+    //地址
+    String requestUrl = "https://api.weixin.qq.com/sns/jscode2session";
 
     @Autowired
     private UserService userService;
+
+    /**
+     * 获取微信小程序 session_key 和 openid
+     * @param code 调用微信登陆返回的Code
+     * @return
+     */
+    @RequestMapping(value = "/getSessionKeyOropenid", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseData getSessionKeyOropenid(String code) {
+        ResponseData result = new ResponseData();
+        //微信端登录code值,String wxCode = code;
+        if (StringUtils.isEmpty(code)){
+            result.setCode("500500");
+            result.setMsg("code为空");
+            return result;
+        }
+        //请求地址 https://api.weixin.qq.com/sns/jscode2session
+        Map<String, String> requestUrlParam = new HashMap<String, String>();
+        requestUrlParam.put("appid", wxspAppid);  //开发者设置中的appId
+        requestUrlParam.put("secret", wxspSecret); //开发者设置中的appSecret
+        requestUrlParam.put("js_code", code); //小程序调用wx.login返回的code
+        requestUrlParam.put("grant_type", "authorization_code");    //默认参数 authorization_code
+
+        //发送post请求读取调用微信 https://api.weixin.qq.com/sns/jscode2session 接口获取openid用户唯一标识
+        JSONObject jsonObject = JSON.parseObject(HttpRequest.sendPost(requestUrl, requestUrlParam));
+        result.setData(jsonObject);
+        result.setCode("200");
+        result.setMsg("success");
+        return result;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
