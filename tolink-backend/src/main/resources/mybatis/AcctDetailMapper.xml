@@ -47,7 +47,7 @@
     <!--查询-->
     <select id="selectAcctDetail" parameterType="com.angrywolves.tolink.entity.AcctDetail" resultMap="BaseResultMap">
       SELECT
-      *
+      id,<include refid="base_sql"/>
       FROM
       acct_detail
       WHERE

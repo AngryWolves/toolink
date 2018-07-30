@@ -22,4 +22,20 @@
         NOW()
         )
     </insert>
+
+    <!--查询-->
+    <select id="selectTag" parameterType="com.angrywolves.tolink.entity.Tag" resultMap="BaseResultMap">
+      SELECT
+      id,<include refid="base_sql"/>
+      FROM tag
+        <if test="size != 0">
+            LIMIT ${start},${size}
+        </if>
+    </select>
+
+    <select id="selectTagCount"  parameterType="java.util.Map" resultType="Integer">
+        SELECT
+        count(1)
+        FROM tag
+    </select>
 </mapper>

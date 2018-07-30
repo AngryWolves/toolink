@@ -44,4 +44,10 @@ public class AcctService {
 
         return acctDetailMapper.saveAcctDetail(entity);
     }
+
+    //保存账目类型
+    public Integer createAcctType(AcctType entity){
+
+        return acctTypeMapper.saveAcctType(entity);
+    }
 }
