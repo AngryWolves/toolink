@@ -16,7 +16,7 @@
     </resultMap>
 
     <sql id="base_sql">
-       open_id, user_name, sex, age, region_province, region_city, region_district
+       open_id, user_name, sex, age, region_province, region_city, region_district,create_time, modify_time
     </sql>
 
     <insert id="saveUser" parameterType="com.angrywolves.tolink.entity.User" useGeneratedKeys="true" keyProperty="id">

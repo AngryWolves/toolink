@@ -29,7 +29,7 @@ public class AcctType implements Serializable {
     private Date createTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date modifyTime;
+    private Date modefyTime;
 
     public Long getId() {
         return id;
@@ -71,11 +71,11 @@ public class AcctType implements Serializable {
         this.createTime = createTime;
     }
 
-    public Date getModifyTime() {
-        return modifyTime;
+    public Date getModefyTime() {
+        return modefyTime;
     }
 
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
+    public void setModefyTime(Date modefyTime) {
+        this.modefyTime = modefyTime;
     }
 }

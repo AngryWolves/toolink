@@ -8,11 +8,11 @@
         <result column="type_name" property="typeName" jdbcType="VARCHAR" />
         <result column="type_img_url" property="typeImgUrl" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+        <result column="modefy_time" property="modefyTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <sql id="base_sql">
-      type_class, type_name, type_img_url, create_time, modify_time
+      type_class, type_name, type_img_url, create_time, modefy_time
     </sql>
 
     <insert id="saveAcctType" parameterType="com.angrywolves.tolink.entity.AcctType" useGeneratedKeys="true" keyProperty="id">
@@ -27,6 +27,6 @@
     </insert>
 
     <select id="selectAcctType" parameterType="com.angrywolves.tolink.entity.AcctType" resultMap="BaseResultMap">
-      SELECT id,<include refid="base_sql"/> FROM acct_type LIMIT LIMIT ${start},${size}
+      SELECT id,<include refid="base_sql"/> FROM acct_type LIMIT ${start},${size}
     </select>
 </mapper>

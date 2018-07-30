@@ -42,7 +42,7 @@ public class TagController {
         Integer integer = tagService.saveTag(entity);
         if (integer < 0){
             result.setCode("500501");
-            result.setMsg("error");
+            result.setMsg("保存失败");
             return result;
         }
         result.setCode("200");

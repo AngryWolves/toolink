@@ -15,6 +15,7 @@
         user_id, acct_type_id, amount, create_time, modify_time
     </sql>
 
+    <!--保存-->
     <insert id="saveAcctDetail" parameterType="com.angrywolves.tolink.entity.AcctDetail" useGeneratedKeys="true" keyProperty="id">
       INSERT INTO acct_detail (<include refid="base_sql"/>)
       VALUES (
@@ -25,4 +26,43 @@
         NOW()
         )
     </insert>
+
+    <!--编辑-->
+    <update id="updateAcctDetailById">
+        UPDATE acct_detail
+        <set>
+            <if test="acctTypeId != null">
+                acct_type_id = #{acctTypeId,jdbcType=BIGINT},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            modify_time = NOW()
+        </set>
+        <where>
+            id = #{id,jdbcType=BIGINT}
+        </where>
+    </update>
+
+    <!--查询-->
+    <select id="selectAcctDetail" parameterType="com.angrywolves.tolink.entity.AcctDetail" resultMap="BaseResultMap">
+      SELECT
+      *
+      FROM
+      acct_detail
+      WHERE
+      user_id = #{userId,jdbcType=BIGINT}
+        <if test="size != 0">
+            LIMIT ${start},${size}
+        </if>
+    </select>
+
+    <select id="selectAcctDetailCount" parameterType="java.util.Map" resultType="Integer">
+      SELECT
+      count(1)
+      FROM
+      acct_detail
+      WHERE
+      user_id = #{userId,jdbcType=BIGINT}
+    </select>
 </mapper>
