@@ -8,6 +8,7 @@ import com.angrywolves.tolink.framework.common.util.AesCbcUtil;
 import com.angrywolves.tolink.framework.common.util.HttpRequest;
 import com.angrywolves.tolink.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,7 @@ public class WxLoginController {
      * @param code 调用微信登陆返回的Code
      * @return
      */
+    @ApiOperation(value="获取微信小程序session_key和openid", notes="调用微信登陆返回的Code")
     @RequestMapping(value = "/getSessionKeyOropenid", method = RequestMethod.POST)
     @ResponseBody
     public ResponseData getSessionKeyOropenid(String code) {
@@ -69,6 +71,7 @@ public class WxLoginController {
         return result;
     }
 
+    @ApiOperation(value="登陆接口", notes="登陆接口")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public ResponseData decodeUserInfo(String encryptedData, String iv, String code){
@@ -90,7 +93,7 @@ public class WxLoginController {
         //获取会话密钥（session_key）
         String session_key = json.get("session_key").toString();
         //用户的唯一标识（openid）
-//        String openid = (String) json.get("openid");
+        //String openid = (String) json.get("openid");
 
         //////////////// 2、对encryptedData加密数据进行AES解密 ////////////////
         try {
