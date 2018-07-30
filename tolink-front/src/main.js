@@ -14,13 +14,27 @@ export default {
     pages: [
       'pages/logs/main',
       'pages/index/main',
-      '^pages/myIndex/main',
+      '^pages/inCome/main',
+      'pages/outPut/main'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarTitleText: 'TEXT',
       navigationBarTextStyle: 'black'
-    }
+    },
+    tabBar: {
+      list: [{
+        pagePath: "pages/inCome/main",
+        iconPath: 'static/incomeIcon.png',
+        selectedIconPath: 'static/incomeIconSelect.png',
+        text: "收入"
+      }, {
+        pagePath: "pages/outPut/main",
+        iconPath: 'static/outputIcon.png',
+        selectedIconPath: 'static/outputIconSelect.png',
+        text: "支出"
+      }]
+    },
   }
 }
