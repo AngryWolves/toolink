@@ -61,7 +61,7 @@ public class WxLoginController {
         requestUrlParam.put("appid", wxspAppid);  //开发者设置中的appId
         requestUrlParam.put("secret", wxspSecret); //开发者设置中的appSecret
         requestUrlParam.put("js_code", code); //小程序调用wx.login返回的code
-        requestUrlParam.put("grant_type", "authorization_code");    //默认参数 authorization_code
+        requestUrlParam.put("grant_type", grant_type);    //默认参数 authorization_code
 
         //发送post请求读取调用微信 https://api.weixin.qq.com/sns/jscode2session 接口获取openid用户唯一标识
         JSONObject jsonObject = JSON.parseObject(HttpRequest.sendPost(requestUrl, requestUrlParam));
