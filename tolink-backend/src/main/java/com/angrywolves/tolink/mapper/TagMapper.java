@@ -22,4 +22,7 @@ public interface TagMapper {
     List<Tag> selectTag(@Param("start")int start, @Param("size")int size);
 
     Integer selectTagCount();
+
+    //修改标签
+    Integer updateTagById(Tag entity);
 }

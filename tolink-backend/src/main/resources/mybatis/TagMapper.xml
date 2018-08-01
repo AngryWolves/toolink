@@ -38,4 +38,12 @@
         count(1)
         FROM tag
     </select>
+
+    <!--修改-->
+    <update id="updateTagById" parameterType="com.angrywolves.tolink.entity.Tag">
+        UPDATE
+        tag
+        SET tag_name = #{tagName,jdbcType=VARCHAR}, modify_time = NOW()
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

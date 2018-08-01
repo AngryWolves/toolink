@@ -49,4 +49,29 @@ public class TagController {
         result.setMsg("success");
         return result;
     }
+
+    @ApiOperation(value="修改标签接口", notes="修改标签接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "entity", value = "entity", required = true, paramType = "update", dataType = "Tag"),
+    })
+    @RequestMapping(value = "/updateTagById", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseData updateTagById(@RequestBody Tag entity){
+        ResponseData result = new ResponseData();
+        if (StringUtils.isEmpty(entity.getTagName())){
+            result.setCode("500500");
+            result.setMsg("标签名称不能为空");
+            return result;
+        }
+
+        Integer integer = tagService.updateTagById(entity);
+        if (integer < 0){
+            result.setCode("500501");
+            result.setMsg("保存失败");
+            return result;
+        }
+        result.setCode("200");
+        result.setMsg("success");
+        return result;
+    }
 }

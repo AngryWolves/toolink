@@ -34,4 +34,10 @@ public class TagService {
         result.setTotal(total.toString());
         return result;
     }
+
+    //修改标签
+    public Integer updateTagById(Tag entity){
+
+        return tagMapper.updateTagById(entity);
+    }
 }
