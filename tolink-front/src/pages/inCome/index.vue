@@ -12,7 +12,13 @@ export default {
 
     }
   },
-  mounted() {}
+  mounted() {
+    wx.login({
+      success: function(res) {
+        console.log(res);
+      }
+    });
+  }
 }
 </script>
 

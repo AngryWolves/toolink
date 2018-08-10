@@ -9,8 +9,8 @@
 	},
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
-	"appid": "touristappid",
-	"projectname": "tolink-front_",
+	"appid": "wx65c7dd45d8f42f76",
+	"projectname": "123456",
 	"condition": {
 		"search": {
 			"current": -1,
