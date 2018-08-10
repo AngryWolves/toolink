@@ -31,7 +31,7 @@ public class WxLoginController {
     //小程序唯一标识   (在微信小程序管理后台获取)
     String wxspAppid = "wx65c7dd45d8f42f76";
     //小程序的 app secret (在微信小程序管理后台获取)
-    String wxspSecret = "wx65c7dd45d8f42f76";
+    String wxspSecret = "0ec4fdd14ed2d5a5fb80aef59d0b54f2";
     //授权（必填）
     String grant_type = "authorization_code";
     //地址
