@@ -29,9 +29,9 @@ import java.util.Map;
 public class WxLoginController {
 
     //小程序唯一标识   (在微信小程序管理后台获取)
-    String wxspAppid = "xxxxxxxxxxxxxx";
+    String wxspAppid = "wx65c7dd45d8f42f76";
     //小程序的 app secret (在微信小程序管理后台获取)
-    String wxspSecret = "xxxxxxxxxxxxxx";
+    String wxspSecret = "wx65c7dd45d8f42f76";
     //授权（必填）
     String grant_type = "authorization_code";
     //地址

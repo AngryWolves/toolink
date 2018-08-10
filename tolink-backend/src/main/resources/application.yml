@@ -11,9 +11,9 @@ spring:
     application:
         name: bees
     datasource:
-        url: jdbc:mysql://localhost:3306/bee?autoReconnect=true&zeroDateTimeBehavior=convertToNull
+        url: jdbc:mysql://127.0.0.1:3306/toolink?autoReconnect=true&zeroDateTimeBehavior=convertToNull
         username: root
-        password: xulu
+        password: a123456
         driver-class-name: com.mysql.jdbc.Driver
         initial-size: 20
         max-active: 100
